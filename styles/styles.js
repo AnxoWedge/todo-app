@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    menubtn:{
+      flex: 1,
+      paddingTop: 65,
+    }
   });
   
 
