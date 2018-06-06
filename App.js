@@ -18,12 +18,22 @@ export default class App extends React.Component {
         {title:"teste4", data:["teste4nome"],},
         ],
       text: "",
-
     }
+    this.onSubmit = this.onSubmit.bind(this);
   }
   handledSubmission(text){
     console.log('e')
   }
+
+  onSubmit(props){
+    //Alert.alert(this.props.text)
+    let arrayItem = Object.assign({},this.state.lista) 
+    arrayItem.push(this.props.text)
+    this.setState({name:" ",
+    lista: arrayItem,
+    })
+
+}
 
 
   render() {
@@ -44,7 +54,7 @@ export default class App extends React.Component {
            <List datarino={this.state.lista}/>
            
 
-           <AddListItem text={this.state.text} handledSubmission={this.handledSubmission}/>
+           <AddListItem text={this.state.text} handledSubmission={this.handledSubmission} onSubmit={this.onSubmit}/>
 
         </View>
       </ScrollView>

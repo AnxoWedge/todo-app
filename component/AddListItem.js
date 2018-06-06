@@ -5,22 +5,12 @@ export default class AddListItem extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            name: this.props.text,
-            arrayItem: [],
+            name: "",
 
         }
-        this.onSubmit = this.onSubmit.bind(this)
-
     }
-
-    onSubmit(props){
-        Alert.alert(this.props.text)
-        let arrayItem = this.state.arrayItem
-        arrayItem.push(this.props.text)
-        this.setState({name:" ",
-        arrayItem: arrayItem,
-        
-    })
+    handleTextChange(text){
+        this.setState({name:text,})
     }
 
     render(){
@@ -28,10 +18,11 @@ export default class AddListItem extends React.Component{
             <View>
                 <TextInput
                     placeholder="Adicione o seu item"
-                    onChangeText={(text)=>{this.setState({name:text,})}}
-                    onSubmitEditing={this.onSubmit(this.props)}
+                    
+                    onChangeText={(text)=>this.handleTextChange(text)}
+                    onSubmitEditing={this.props.onSubmit}
                 />
-                <Button title="Button" onPress={this.onSubmit}>
+                <Button title="Button" onPress={this.props.onSubmit}>
                 </Button>
             </View>
         )
