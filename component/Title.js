@@ -5,9 +5,9 @@ export default class Title extends React.Component{
     render(){
         return(
             <View>
-            <Text>
-                {this.props.title}
-            </Text>
+                <Text style={{fontWeight:'bold',}}>
+                    {this.props.title}
+                </Text>
             </View>
 
         )
