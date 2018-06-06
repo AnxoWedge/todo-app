@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, TextInput, StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { ScrollView, TextInput, StyleSheet, Text, View, TouchableHighlight, Alert } from 'react-native';
 import styles from './styles/styles'
 import Title from './component/Title'
 import List from './component/List'
@@ -25,13 +25,13 @@ export default class App extends React.Component {
     console.log('e')
   }
 
-  onSubmit(props){
-    //Alert.alert(this.props.text)
-    let arrayItem = Object.assign({},this.state.lista) 
-    arrayItem.push(this.props.text)
+  onSubmit(data){
+    Alert.alert('wat')
+    /*let arrayItem = Object.assign({}, this.state.lista) 
+    arrayItem.push('something ')
     this.setState({name:" ",
     lista: arrayItem,
-    })
+    })*/
 
 }
 
@@ -42,16 +42,24 @@ export default class App extends React.Component {
         <Nav stylenav={styles.menubtn}/>
         <View style={styles.container}>
           <Title title="Por Fazer"/>
-           <List datarino={this.state.lista}/>
+           <List 
+           datarino={this.state.lista}
+           />
            
           
 
           <Title title="Completo"/>
-           <List datarino={this.state.lista}/>
-           
+           <List 
+           datarino={this.state.lista}
+           />
+
+
 
           <Title title="Lixo"/>
-           <List datarino={this.state.lista}/>
+           <List 
+           datarino={this.state.lista}
+           />
+           
            
 
            <AddListItem text={this.state.text} handledSubmission={this.handledSubmission} onSubmit={this.onSubmit}/>
