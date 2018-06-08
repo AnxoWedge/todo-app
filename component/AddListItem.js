@@ -6,23 +6,23 @@ export default class AddListItem extends React.Component{
         super(props)
         this.state={
             name: "",
-
         }
         //this.handleTextChange = this.handleTextChange(this)
+        this.handleTextSubmit = this.handleTextSubmit(this);
     }
-    
 
-
-    handleTextSubmit(data){
-        !this.props.onSubmit || this.props.onSubmit(data)
+    handleTextSubmit(){
+        let stats = Object.assign({}, this.state);
+        this.state={
+            name: "",   
+        }
+        !this.props.onSubmit || this.props.onSubmit(stats)
     }
 
     handleTextChange(text){
         this.setState({
             name: text,
-        })
-    }
-    
+        })}
 
     render(){
         return(
@@ -32,8 +32,7 @@ export default class AddListItem extends React.Component{
                     onChangeText={(text)=>this.handleTextChange(text)}
                     onSubmitEditing={this.handleTextSubmit}
                 />
-                <Button title="Button" onPress={this.handleTextSubmit}>
-                </Button>
+                <Button title="Button" onPress={()=>this.handleTextSubmit}></Button>
             </View>
         )
     }

@@ -19,20 +19,20 @@ export default class App extends React.Component {
         ],
       text: "",
     }
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-  handledSubmission(text){
-    console.log('e')
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  onSubmit(data){
-    Alert.alert('wat')
-    /*let arrayItem = Object.assign({}, this.state.lista) 
-    arrayItem.push('something ')
-    this.setState({name:" ",
-    lista: arrayItem,
-    })*/
-
+  /*
+componentWillReceiveProps(){
+  onSubmit(props)
+} */
+handleSubmit(stats){
+  /*let arrayItem = Object.assign({}, this.state.lista) 
+  arrayItem.push('something ') */
+  this.setState({
+    name: this.props.stats,
+  
+  })
 }
 
 
@@ -62,7 +62,9 @@ export default class App extends React.Component {
            
            
 
-           <AddListItem text={this.state.text} handledSubmission={this.handledSubmission} onSubmit={this.onSubmit}/>
+           <AddListItem onSubmit={this.handleSubmit}/>
+
+           <Text>{this.state.name}</Text>
 
         </View>
       </ScrollView>
