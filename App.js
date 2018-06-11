@@ -21,18 +21,17 @@ export default class App extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  
   /*
 componentWillReceiveProps(){
   onSubmit(props)
 } */
 handleSubmit(stats){
-  /*let arrayItem = Object.assign({}, this.state.lista) 
-  arrayItem.push('something ') */
-  this.setState({
-    name: this.props.stats,
-  
-  })
+  let lista =  this.state.lista
+  lista.push(stats)
+  this.setState({lista})
+  console.log(stats)
+  console.log(lista)
 }
 
 
@@ -41,7 +40,6 @@ handleSubmit(stats){
       <ScrollView>
         <Nav stylenav={styles.menubtn}/>
         <View style={styles.container}>
-        <Text>{this.state.name}</Text>
           <Title title="Por Fazer"/>
            <List 
            datarino={this.state.lista}

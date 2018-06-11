@@ -1,24 +1,34 @@
 import React from 'react'
-import {View, Text, TextInput, Button, Alert} from 'react-native'
+import {View, Text, TextInput, Button, Alert, TouchableHighlight} from 'react-native'
 
 export default class AddListItem extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            name: "",
-        }
-        //this.handleTextChange = this.handleTextChange(this)
-        this.handleTextSubmit = this.handleTextSubmit(this);
+            stats:{
+                title: ["wat"],
+                data: ["sim"],
+        },
+        
+        
     }
 
+    this.handleTextChange = this.handleTextChange.bind(this)   
+    this.handleTextSubmit = this.handleTextSubmit.bind(this);
+}
+
     handleTextSubmit(props){
-        let stats = Object.assign({}, this.state.name); 
+        let stats = Object.assign({}, this.state.stats)
+        console.log('he did it')
         !this.props.onSubmit || this.props.onSubmit(stats)
     }
 
     handleTextChange(text){
         this.setState({
-            name: text,
+            stats:{
+                title: [text],
+                data: [text],
+            }
         })}
 
     render(){
@@ -29,7 +39,9 @@ export default class AddListItem extends React.Component{
                     onChangeText={(text)=>this.handleTextChange(text)}
                     onSubmitEditing={this.handleTextSubmit}
                 />
-                <Button title="Button" onPress={this.handleTextSubmit}></Button>
+                <TouchableHighlight onPress={this.handleTextSubmit}><Text>Button</Text></TouchableHighlight>
+
+                <Text>{this.state.stats.data}</Text>
             </View>
         )
     }
