@@ -41,10 +41,12 @@ handleSubmit(stats){
       <ScrollView>
         <Nav stylenav={styles.menubtn}/>
         <View style={styles.container}>
+        <Text>{this.state.name}</Text>
           <Title title="Por Fazer"/>
            <List 
            datarino={this.state.lista}
            />
+           
            
           
 
