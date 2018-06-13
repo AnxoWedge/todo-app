@@ -10,17 +10,21 @@ export default class List extends React.Component {
         }
     }
     
-
-
     componentWillReceiveProps(props){
         this.setState({stats: this.props.datarino})
     } 
 
+
+    handleRemoveItem(index){
+
+        !this.props.onRemove || this.props.onRemove(index)
+
+    }
     
     render(){
         return(
             <SectionList
-                renderItem={({item, index, section}) => <Item index={index} item={item}/>  }
+                renderItem={({item, index, section}) => <Item Remove={this.handleRemoveItem} index={index} item={item}/>  }
                 sections={this.state.stats}
                 keyExtractor={(item, index) => item + index}
             />

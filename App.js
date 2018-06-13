@@ -20,6 +20,7 @@ export default class App extends React.Component {
       text: "",
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
   
   /*
@@ -33,6 +34,11 @@ handleSubmit(stats){
   console.log(stats)
   console.log(lista)
 }
+handleRemove(index){
+  let lista = this.state.lista
+  lista.splice(index, 1)
+  this.setState({lista})
+}
 
 
   render() {
@@ -43,6 +49,7 @@ handleSubmit(stats){
           <Title title="Por Fazer"/>
            <List 
            datarino={this.state.lista}
+           onRemove={this.handleRemove}
            />
            
            

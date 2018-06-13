@@ -19,7 +19,6 @@ export default class AddListItem extends React.Component{
 
     handleTextSubmit(props){
         let stats = Object.assign({}, this.state.stats)
-        console.log('he did it')
         !this.props.onSubmit || this.props.onSubmit(stats)
     }
 
