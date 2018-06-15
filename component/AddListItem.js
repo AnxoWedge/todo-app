@@ -38,7 +38,7 @@ export default class AddListItem extends React.Component{
                     onChangeText={(text)=>this.handleTextChange(text)}
                     onSubmitEditing={this.handleTextSubmit}
                 />
-                <TouchableHighlight onPress={this.handleTextSubmit}><Text>Button</Text></TouchableHighlight>
+                <TouchableHighlight onPress={this.handleTextSubmit}><Text>Adicionar</Text></TouchableHighlight>
 
                 <Text>{this.state.stats.data}</Text>
             </View>

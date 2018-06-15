@@ -31,8 +31,6 @@ handleSubmit(stats){
   let lista =  this.state.lista
   lista.push(stats)
   this.setState({lista})
-  console.log(stats)
-  console.log(lista)
 }
 handleRemove(index){
   let lista = this.state.lista

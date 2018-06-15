@@ -22,9 +22,9 @@ export default class List extends React.Component {
     }
     
     render(){
-        return(
+        return( 
             <SectionList
-                renderItem={({item, index, section}) => <Item Remove={this.handleRemoveItem} index={index} item={item}/>  }
+                renderItem={({item, index, section}) => <Item Remove={this.handleRemoveItem.bind(this)} index={index} item={item} section={section}/>  }
                 sections={this.state.stats}
                 keyExtractor={(item, index) => item + index}
             />

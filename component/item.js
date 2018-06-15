@@ -1,28 +1,36 @@
 import React from 'react'
-import {TouchableHighlight, Text, Alert} from 'react-native'
+import {TouchableHighlight, Text, Alert, TextInput} from 'react-native'
 
 
 export default class Item extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            index: this.props.index
+            index: this.props.index,
+            editmode: false,
         }
 
 
 
-        this.handleRemove = this.handleRemove.bind(this)
+        //this.handleRemove = this.handleRemove.bind(this)
+    }
+
+    handleEdit(props) {
+        this.setState({
+            editmode: !this.state.editmode,
+        })
+        console.log(this.state.editmode)
     }
 
     handleRemove(props){
         let index = this.state.index
         !this.props.Remove || this.props.Remove(index);
-        console.log(this.state.lista)
     }
 
     render(){
         return(
-        <TouchableHighlight onLongPress={this.handleRemove.bind(this)}><Text key={this.props.index}>{this.props.item}</Text></TouchableHighlight>
+        <TouchableHighlight onLongPress={this.handleRemove.bind(this)} onPress={this.handleEdit.bind(this)}><Text key={this.props.index}> {this.props.item}
+        </Text></TouchableHighlight>
         )
     }
 }
