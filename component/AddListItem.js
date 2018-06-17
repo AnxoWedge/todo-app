@@ -1,5 +1,6 @@
 import React from 'react'
 import {View, Text, TextInput, Button, Alert, TouchableHighlight} from 'react-native'
+import {DatePicker} from 'react-native-ui-xg';
 
 export default class AddListItem extends React.Component{
     constructor(props){
@@ -8,6 +9,7 @@ export default class AddListItem extends React.Component{
             stats:{
                 title: ["wat"],
                 data: ["sim"],
+                date: "2018-06-17"
         },
         
         
@@ -25,7 +27,7 @@ export default class AddListItem extends React.Component{
     handleTextChange(text){
         this.setState({
             stats:{
-                title: [text],
+                key: [text],
                 data: [text],
             }
         })}
@@ -37,6 +39,28 @@ export default class AddListItem extends React.Component{
                     placeholder="Adicione o seu item"
                     onChangeText={(text)=>this.handleTextChange(text)}
                     onSubmitEditing={this.handleTextSubmit}
+                />
+                <DatePicker
+                    style={{width: 200}}
+                    date={this.state.date}
+                    mode="date"
+                    placeholder="Seleccione a data"
+                    format="DD-MM-YYYY"
+                    confirmBtnText="Confirm"
+                    cancelBtnText="Cancel"
+                    customStyles={{
+                    dateIcon: {
+                        position: 'absolute',
+                        left: 0,
+                        top: 4,
+                        marginLeft: 0
+                    },
+                    dateInput: {
+                        marginLeft: 36
+                    }
+                    // ... You can check the source to find the other keys.
+                    }}
+                    onDateChange={(date) => {this.setState({date: date})}}
                 />
                 <TouchableHighlight onPress={this.handleTextSubmit}><Text>Adicionar</Text></TouchableHighlight>
 

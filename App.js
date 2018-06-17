@@ -12,10 +12,10 @@ export default class App extends React.Component {
     this.state={
       title: "To Do List",
       lista:[
-        {title:"teste1", data:["teste1nome"],},
-        {title:"teste2", data:["teste2nome"],},
-        {title:"teste3", data:["teste3nome"],},
-        {title:"teste4", data:["teste4nome"],},
+        {key:"teste1", data:["teste1nome"],},
+        {key:"teste2", data:["teste2nome"],},
+        {key:"teste3", data:["teste3nome"],},
+        {key:"teste4", data:["teste4nome"],},
         ],
       text: "",
     }
@@ -28,7 +28,7 @@ componentWillReceiveProps(){
   onSubmit(props)
 } */
 handleSubmit(stats){
-  let lista =  this.state.lista
+  let lista = this.state.lista
   lista.push(stats)
   this.setState({lista})
 }

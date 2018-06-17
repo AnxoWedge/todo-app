@@ -23,10 +23,11 @@ export default class List extends React.Component {
     
     render(){
         return( 
-            <SectionList
-                renderItem={({item, index, section}) => <Item Remove={this.handleRemoveItem.bind(this)} index={index} item={item} section={section}/>  }
-                sections={this.state.stats}
+            <FlatList
+                renderItem={({item, index}) => <Item Remove={this.handleRemoveItem.bind(this)} index={index} item={item} />  }
+                data={this.state.stats}
                 keyExtractor={(item, index) => item + index}
+                extraData={this.props.datarino}
             />
         )
     }

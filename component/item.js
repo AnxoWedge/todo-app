@@ -1,5 +1,5 @@
 import React from 'react'
-import {TouchableHighlight, Text, Alert, TextInput} from 'react-native'
+import {View, TouchableHighlight, Text, Alert, TextInput} from 'react-native'
 
 
 export default class Item extends React.Component {
@@ -29,8 +29,11 @@ export default class Item extends React.Component {
 
     render(){
         return(
-        <TouchableHighlight onLongPress={this.handleRemove.bind(this)} onPress={this.handleEdit.bind(this)}><Text key={this.props.index}> {this.props.item}
-        </Text></TouchableHighlight>
+        <View>
+            <TouchableHighlight onLongPress={this.handleRemove.bind(this)} onPress={this.handleEdit.bind(this)}>
+                <Text key={this.props.index + this.props.item.key}> {this.props.item.data}</Text>
+            </TouchableHighlight>
+        </View>
         )
     }
 }
