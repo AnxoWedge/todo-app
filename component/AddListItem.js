@@ -1,6 +1,7 @@
 import React from 'react'
-import {View, Text, TextInput, Button, Alert, TouchableHighlight} from 'react-native'
-//import {DatePicker} from 'react-native-ui-xg';
+import {View, Text, TextInput, Button, Alert, TouchableHighlight, Modal} from 'react-native'
+import DatePicker from 'react-native-datepicker';
+import AddEdit from './../component/AddEdit'
 
 export default class AddListItem extends React.Component{
     constructor(props){
@@ -9,7 +10,7 @@ export default class AddListItem extends React.Component{
             stats:{
                 title: ["wat"],
                 data: ["sim"],
-                date: "2018-06-17",
+                
         },
         
         
@@ -29,42 +30,54 @@ export default class AddListItem extends React.Component{
             stats:{
                 key: [text],
                 data: [text],
+                date: this.state.date,
             }
         })}
 
     render(){
         return(
             <View>
-                <TextInput
+            <Modal 
+                animationType="slide"
+                transparent={false}
+                visible={this.state.editmode}
+                onRequestClose={() => {
+                    console.log(lel);
+            }}>
+                {/*<TextInput
                     placeholder="Adicione o seu item"
                     onChangeText={(text)=>this.handleTextChange(text)}
                     onSubmitEditing={this.handleTextSubmit}
                 />
-               {/* <DatePicker
-                    style={{width: 200}}
-                    date={this.state.date}
-                    mode="date"
-                    placeholder="Seleccione a data"
-                    format="DD-MM-YYYY"
-                    confirmBtnText="Confirm"
-                    cancelBtnText="Cancel"
-                    customStyles={{
-                    dateIcon: {
-                        position: 'absolute',
-                        left: 0,
-                        top: 4,
-                        marginLeft: 0
-                    },
-                    dateInput: {
-                        marginLeft: 36
-                    }
-                    // ... You can check the source to find the other keys.
-                    }}
-                    onDateChange={(date) => {this.setState({date: date})}}
-                />*/}
-                <TouchableHighlight onPress={this.handleTextSubmit}><Text>Adicionar</Text></TouchableHighlight>
 
-                <Text>{this.state.stats.data}</Text>
+               <DatePicker
+                style={{width: 200}}
+                date={this.state.date}
+                mode="date"
+                placeholder="Selecione a Data"
+                format="YYYY-MM-DD"
+                minDate="2016-05-01"
+                maxDate="2017-06-01"
+                confirmBtnText="Confirm"
+                cancelBtnText="Cancel"
+                customStyles={{
+                dateIcon: {
+                    position: 'absolute',
+                    left: 0,
+                    top: 4,
+                    marginLeft: 0
+                },
+                dateInput: {
+                    marginLeft: 36
+                }
+                // ... You can check the source to find the other keys.
+                }}
+                onDateChange={(date) => {this.setState({date})}}
+                />
+
+                <TouchableHighlight onPress={this.handleTextSubmit}><Text>Adicionar</Text></TouchableHighlight>
+                <Text>{this.state.stats.data}</Text>*/}
+            </Modal>
             </View>
         )
     }

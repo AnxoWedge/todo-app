@@ -6,7 +6,7 @@ export default class Nav extends React.Component{
         render(){
             return (
                 <View>
-                    <TouchableHighlight onPress={() => Alert.alert('ayy')}><View style={this.props.stylenav}><Image source={require('.././assets/home.png')}/></View></TouchableHighlight> 
+                    <TouchableHighlight onPress={() => Alert.alert('quack')}><View style={this.props.stylenav}><Image source={require('.././assets/home.png')}/></View></TouchableHighlight> 
                 </View>
             )
         }

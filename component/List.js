@@ -19,8 +19,8 @@ export default class List extends React.Component {
 
         !this.props.onRemove || this.props.onRemove(index)
     }
-    handleUpdate(text){
-        !this.props.OnUpdate || this.props.OnUpdate(text);
+    handleUpdate(text,index){
+        !this.props.OnUpdate || this.props.OnUpdate(text,index);
     }
     
     render(){
@@ -29,7 +29,7 @@ export default class List extends React.Component {
                 renderItem={({item, index}) => <Item Remove={this.handleRemoveItem.bind(this)} index={index} item={item} Update={this.handleUpdate.bind(this)} />  }
                 data={this.state.stats}
                 keyExtractor={(item, index) => item + index}
-                extraData={this.state.stats}
+                extraData={this.state}
             />
         )
     }

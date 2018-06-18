@@ -11,7 +11,7 @@ export default class Item extends React.Component {
             text: this.props.item.data,
         }
 
-
+        this.handleSubmit= this.handleSubmit.bind(this);
         this.handleText = this.handleText.bind(this);
                 //this.handleRemove = this.handleRemove.bind(this)
     }
@@ -30,9 +30,10 @@ export default class Item extends React.Component {
         this.setState({text: text})
     }
 
-    handleSubmit(){
+    handleSubmit(props){
+        let index = this.state.index;
         let text = this.state.text;
-        !this.props.Update || this.props.Update(this);
+        !this.props.Update || this.props.Update(text, index);
     }
 
 
@@ -40,7 +41,7 @@ export default class Item extends React.Component {
         return(
         <View>
             <TouchableHighlight onLongPress={this.handleRemove.bind(this)} onPress={this.handleEditSwitch.bind(this)}>
-                <Text key={this.props.index + this.props.item.key}> {this.props.item.data}</Text>
+                <Text key={this.props.index + this.props.item.key}> {this.props.item.data} {this.props.item.date}</Text>
                 
             </TouchableHighlight>
             <Modal 
@@ -48,16 +49,20 @@ export default class Item extends React.Component {
                 transparent={false}
                 visible={this.state.editmode}
                 onRequestClose={() => {
-                  alert('Modal has been closed.');
+                  console.log(lel);
                 }}>
                     <View>
                         <TextInput                    
-                            placeholder={this.state.text}
+                            placeholder='editar'
                             onChangeText={(text)=>this.handleText(text)}
                             onSubmitEditing={this.handleSubmit}/>
-                        <TouchableHighlight onPress={this.handleEditSwitch.bind(this)}>
-                        <Text>{this.state.editmode ? "yes" : "no"}</Text>
+                        <TouchableHighlight onPress={this.handleSubmit.bind(this)}>
+                        <Text>Submeter</Text>
                         </TouchableHighlight>
+                        <TouchableHighlight onPress={this.handleEditSwitch.bind(this)}>
+                        <Text>Voltar</Text>
+                        </TouchableHighlight>
+
                     </View>
                 </Modal>
         </View>

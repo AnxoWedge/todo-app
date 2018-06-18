@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, TextInput, StyleSheet, Text, View, TouchableHighlight, Alert } from 'react-native';
+import { ScrollView, TextInput, StyleSheet, Text, View, TouchableHighlight, Alert, Button } from 'react-native';
 import styles from './styles/styles'
 import Title from './component/Title'
 import List from './component/List'
@@ -12,16 +12,21 @@ export default class App extends React.Component {
     this.state={
       title: "To Do List",
       lista:[
-        {key:"teste1", data:["teste1nome"],},
-        {key:"teste2", data:["teste2nome"],},
-        {key:"teste3", data:["teste3nome"],},
-        {key:"teste4", data:["teste4nome"],},
+        {key:"teste1", data:["teste1nome"], date:"2000-1-1"},
+        {key:"teste2", data:["teste2nome"], date:"2000-1-1"},
+        {key:"teste3", data:["teste3nome"], date:"2000-1-1"},
+        {key:"teste4", data:["teste4nome"], date:"2000-1-1"},
         ],
       text: "",
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.handlingUpdate = this.handlingUpdate.bind(this);
   }
+
+
+  /* 19- cor para cada item 
+      20- o mesmo form para o add e o edit */ 
   
   /*
 componentWillReceiveProps(){
@@ -37,14 +42,17 @@ handleRemove(index){
   lista.splice(index, 1)
   this.setState({lista})
 }
-handlingUpdate(text){
+handlingUpdate(text, index){
   let lista = this.state.lista
+  let textroni = text;
+  let indexroni = index;
   let stats = {
-    key:this.props.text,
-    data: [this.props.text],
+    key: textroni,
+    data: [textroni],
   }
-  lista.push(stats)
-  this.setState({stats})
+  lista[index]= stats
+  this.setState({lista})
+  console.log(text)
 }
 
 
@@ -80,6 +88,8 @@ handlingUpdate(text){
            <AddListItem onSubmit={this.handleSubmit}/>
 
            <Text>{this.state.name}</Text>
+
+           <Button onPress={() =>console.log(this.state.lista[4])} title='CONSOLA'></Button>
 
         </View>
       </ScrollView>
