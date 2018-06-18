@@ -18,16 +18,18 @@ export default class List extends React.Component {
     handleRemoveItem(index){
 
         !this.props.onRemove || this.props.onRemove(index)
-
+    }
+    handleUpdate(text){
+        !this.props.OnUpdate || this.props.OnUpdate(text);
     }
     
     render(){
         return( 
             <FlatList
-                renderItem={({item, index}) => <Item Remove={this.handleRemoveItem.bind(this)} index={index} item={item} />  }
+                renderItem={({item, index}) => <Item Remove={this.handleRemoveItem.bind(this)} index={index} item={item} Update={this.handleUpdate.bind(this)} />  }
                 data={this.state.stats}
                 keyExtractor={(item, index) => item + index}
-                extraData={this.props.datarino}
+                extraData={this.state.stats}
             />
         )
     }

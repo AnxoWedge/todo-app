@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, Text, TextInput, Button, Alert, TouchableHighlight} from 'react-native'
-import {DatePicker} from 'react-native-ui-xg';
+//import {DatePicker} from 'react-native-ui-xg';
 
 export default class AddListItem extends React.Component{
     constructor(props){
@@ -9,7 +9,7 @@ export default class AddListItem extends React.Component{
             stats:{
                 title: ["wat"],
                 data: ["sim"],
-                date: "2018-06-17"
+                date: "2018-06-17",
         },
         
         
@@ -40,7 +40,7 @@ export default class AddListItem extends React.Component{
                     onChangeText={(text)=>this.handleTextChange(text)}
                     onSubmitEditing={this.handleTextSubmit}
                 />
-                <DatePicker
+               {/* <DatePicker
                     style={{width: 200}}
                     date={this.state.date}
                     mode="date"
@@ -61,7 +61,7 @@ export default class AddListItem extends React.Component{
                     // ... You can check the source to find the other keys.
                     }}
                     onDateChange={(date) => {this.setState({date: date})}}
-                />
+                />*/}
                 <TouchableHighlight onPress={this.handleTextSubmit}><Text>Adicionar</Text></TouchableHighlight>
 
                 <Text>{this.state.stats.data}</Text>

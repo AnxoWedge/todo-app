@@ -37,6 +37,15 @@ handleRemove(index){
   lista.splice(index, 1)
   this.setState({lista})
 }
+handlingUpdate(text){
+  let lista = this.state.lista
+  let stats = {
+    key:this.props.text,
+    data: [this.props.text],
+  }
+  lista.push(stats)
+  this.setState({stats})
+}
 
 
   render() {
@@ -48,6 +57,7 @@ handleRemove(index){
            <List 
            datarino={this.state.lista}
            onRemove={this.handleRemove}
+           OnUpdate={this.handlingUpdate}
            />
            
            
