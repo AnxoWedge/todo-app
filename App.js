@@ -32,9 +32,9 @@ export default class App extends React.Component {
 componentWillReceiveProps(){
   onSubmit(props)
 } */
-handleSubmit(stats){
+handleSubmit(verifiedStats){
   let lista = this.state.lista
-  lista.push(stats)
+  lista.push(verifiedStats)
   this.setState({lista})
 }
 handleRemove(index){
@@ -42,15 +42,16 @@ handleRemove(index){
   lista.splice(index, 1)
   this.setState({lista})
 }
-handlingUpdate(text, index){
+handlingUpdate(stats, index){
   let lista = this.state.lista
   let textroni = text;
   let indexroni = index;
-  let stats = {
-    key: textroni,
-    data: [textroni],
+  let verifiedStats = {
+    key: stats.data,
+    data: stats.data,
+    date: stats.date,
   }
-  lista[index]= stats
+  lista[index]= verifiedStats
   this.setState({lista})
   console.log(text)
 }

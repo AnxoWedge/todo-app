@@ -19,8 +19,8 @@ export default class List extends React.Component {
 
         !this.props.onRemove || this.props.onRemove(index)
     }
-    handleUpdate(text,index){
-        !this.props.OnUpdate || this.props.OnUpdate(text,index);
+    handleUpdate(stats,index){
+        !this.props.OnUpdate || this.props.OnUpdate(stats,index);
     }
     
     render(){

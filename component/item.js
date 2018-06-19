@@ -1,5 +1,6 @@
 import React from 'react'
 import {View, TouchableHighlight, Text, Alert, TextInput, Modal} from 'react-native'
+import AddEdit from './AddEdit'
 
 
 export default class Item extends React.Component {
@@ -14,9 +15,10 @@ export default class Item extends React.Component {
         this.handleSubmit= this.handleSubmit.bind(this);
         this.handleText = this.handleText.bind(this);
                 //this.handleRemove = this.handleRemove.bind(this)
+        this.handleEditSwitch = this.handleEditSwitch.bind(this)
     }
 
-    handleEditSwitch(props) {
+    handleEditSwitch(editmode) {
         this.setState({
             editmode: !this.state.editmode,
         })
@@ -30,10 +32,9 @@ export default class Item extends React.Component {
         this.setState({text: text})
     }
 
-    handleSubmit(props){
+    handleSubmit(props, stats){
         let index = this.state.index;
-        let text = this.state.text;
-        !this.props.Update || this.props.Update(text, index);
+        !this.props.Update || this.props.Update(stats, index);
     }
 
 
@@ -51,19 +52,12 @@ export default class Item extends React.Component {
                 onRequestClose={() => {
                   console.log(lel);
                 }}>
-                    <View>
-                        <TextInput                    
-                            placeholder='editar'
-                            onChangeText={(text)=>this.handleText(text)}
-                            onSubmitEditing={this.handleSubmit}/>
-                        <TouchableHighlight onPress={this.handleSubmit.bind(this)}>
-                        <Text>Submeter</Text>
-                        </TouchableHighlight>
-                        <TouchableHighlight onPress={this.handleEditSwitch.bind(this)}>
-                        <Text>Voltar</Text>
-                        </TouchableHighlight>
 
-                    </View>
+                <AddEdit
+                onUpdate={this.handleSubmit}
+                onEdit={this.handleEditSwitch}
+                />
+
                 </Modal>
         </View>
         )

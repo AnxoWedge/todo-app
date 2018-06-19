@@ -24,6 +24,8 @@
     "react": "16.3.1",
     "react-native": "^0.55.4",
     "react-native-calendar-picker": "^5.19.0",
+    "react-native-color-picker": "^0.4.0",
+    "react-native-datepicker": "^1.7.2",
     "react-native-ui-xg": "0.0.6"
   }
 }
