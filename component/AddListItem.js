@@ -22,8 +22,8 @@ export default class AddListItem extends React.Component{
 }
 
     handleTextSubmit(stats){
-        this.handleTextChange(stats)
-        let verifiedStats = this.state.stats
+       // this.handleTextChange(stats)
+        let verifiedStats = stats
         !this.props.onSubmit || this.props.onSubmit(verifiedStats)
     }
     handleEditSwitch(editmode){
