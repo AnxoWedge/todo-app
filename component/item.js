@@ -1,6 +1,7 @@
 import React from 'react'
-import {View, TouchableHighlight, Text, Alert, TextInput, Modal} from 'react-native'
+import { StyleSheet, View, TouchableHighlight, Text, Alert, TextInput, Modal} from 'react-native'
 import AddEdit from './AddEdit'
+
 
 
 export default class Item extends React.Component {
@@ -13,12 +14,13 @@ export default class Item extends React.Component {
         }
 
         this.handleSubmit= this.handleSubmit.bind(this);
-        this.handleText = this.handleText.bind(this);
+        //this.handleText = this.handleText.bind(this);
                 //this.handleRemove = this.handleRemove.bind(this)
         this.handleEditSwitch = this.handleEditSwitch.bind(this)
     }
+   
 
-    handleEditSwitch(editmode) {
+    handleEditSwitch(editmode){
         this.setState({
             editmode: !this.state.editmode,
         })
@@ -28,12 +30,14 @@ export default class Item extends React.Component {
         let index = this.state.index
         !this.props.Remove || this.props.Remove(index);
     }
-    handleText(text){
+   /* handleText(text){
         this.setState({text: text})
     }
-
-    handleSubmit(props, stats){
+*/
+    handleSubmit(stats, props){
         let index = this.state.index;
+        let colorino = stats.color;
+        this.setState({color: colorino})
         !this.props.Update || this.props.Update(stats, index);
     }
 
@@ -41,7 +45,7 @@ export default class Item extends React.Component {
     render(){
         return(
         <View>
-            <TouchableHighlight onLongPress={this.handleRemove.bind(this)} onPress={this.handleEditSwitch.bind(this)}>
+            <TouchableHighlight style={{backgroundColor:"red"}}  onLongPress={this.handleRemove.bind(this)} onPress={this.handleEditSwitch.bind(this)}>
                 <Text key={this.props.index + this.props.item.key}> {this.props.item.data} {this.props.item.date}</Text>
                 
             </TouchableHighlight>

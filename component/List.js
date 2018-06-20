@@ -8,6 +8,8 @@ export default class List extends React.Component {
         this.state={
             stats: this.props.datarino
         }
+        this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleRemoveItem = this.handleRemoveItem.bind(this);
     }
     
     componentWillReceiveProps(props){
@@ -26,7 +28,7 @@ export default class List extends React.Component {
     render(){
         return( 
             <FlatList
-                renderItem={({item, index}) => <Item Remove={this.handleRemoveItem.bind(this)} index={index} item={item} Update={this.handleUpdate.bind(this)} />  }
+                renderItem={({item, index}) => <Item Remove={this.handleRemoveItem} index={index} item={item} Update={this.handleUpdate} />  }
                 data={this.state.stats}
                 keyExtractor={(item, index) => item + index}
                 extraData={this.state}

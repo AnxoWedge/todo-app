@@ -12,10 +12,10 @@ export default class App extends React.Component {
     this.state={
       title: "To Do List",
       lista:[
-        {key:"teste1", data:["teste1nome"], date:"2000-1-1"},
-        {key:"teste2", data:["teste2nome"], date:"2000-1-1"},
-        {key:"teste3", data:["teste3nome"], date:"2000-1-1"},
-        {key:"teste4", data:["teste4nome"], date:"2000-1-1"},
+        {key:"teste1", data:["teste1nome"], date:"2000-1-1", color:"purple",},
+        {key:"teste2", data:["teste2nome"], date:"2000-1-1", color:"red",},
+        {key:"teste3", data:["teste3nome"], date:"2000-1-1", color:"blue",},
+        {key:"teste4", data:["teste4nome"], date:"2000-1-1", color:"green",},
         ],
       text: "",
     }
@@ -26,7 +26,7 @@ export default class App extends React.Component {
 
 
   /* 19- cor para cada item 
-      20- o mesmo form para o add e o edit */ 
+     20- o mesmo form para o add e o edit */ 
   
   /*
 componentWillReceiveProps(){
@@ -44,16 +44,15 @@ handleRemove(index){
 }
 handlingUpdate(stats, index){
   let lista = this.state.lista
-  let textroni = text;
   let indexroni = index;
   let verifiedStats = {
     key: stats.data,
     data: stats.data,
     date: stats.date,
+    color: stats.color,
   }
-  lista[index]= verifiedStats
+  lista[index] = verifiedStats
   this.setState({lista})
-  console.log(text)
 }
 
 
