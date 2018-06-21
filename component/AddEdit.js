@@ -3,6 +3,7 @@ import {ScrollView, View, Text, TextInput, Button, Alert, TouchableHighlight, Mo
 import DatePicker from 'react-native-datepicker'
 import {ColorPicker} from 'react-native-color-picker'
 import AppEditStyle from './../styles/appEditStyle'
+import Title from './Title'
 
 /* PROPS NEEDED 
 onUpdate
@@ -50,12 +51,14 @@ handleChangeColor(color){
             
             <ScrollView contentContainerStyle={AppEditStyle.AppEdit_mainFrame}>
                 <View style={AppEditStyle.AppEdit_text}>
+                    <Title title="A Sua Tarefa"/>
                     <TextInput                    
                         placeholder='Escreva a sua tarefa'
                         onChangeText={(text)=> this.handleChangeData(text)}
                         onSubmitEditing={this.handleSubmit}/>
                 </View>
                 <View style={AppEditStyle.AppEdit_calender}>
+                    <Title title="A Data da sua Tarefa"/>
                     <DatePicker
                         style={{width: 200}}
                         date={this.state.date}
@@ -82,6 +85,7 @@ handleChangeColor(color){
                     />
                 </View>
                 <View style={AppEditStyle.AppEdit_colorpick}>
+                    <Title title="Personalize a sua Tarefa"/>
                     <ColorPicker
                         onColorChange= {color=> this.handleChangeColor(color)}
                         onColorSelected={color => alert(`Color selected: ${color}`)}

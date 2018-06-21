@@ -58,8 +58,8 @@ handlingUpdate(stats, index){
 
   render() {
     return (
-      <ScrollView>
-        <Nav stylenav={styles.menubtn}/>
+      <ScrollView contentContainerStyle={styles.bigfathercontainer}>
+        <Nav />
         <View style={styles.container}>
           <Title title="Por Fazer"/>
            <List 
@@ -68,23 +68,10 @@ handlingUpdate(stats, index){
            OnUpdate={this.handlingUpdate}
            />
            
-           
-          
-
           <Title title="Completo"/>
            <List 
            datarino={this.state.lista}
            />
-
-
-
-          <Title title="Lixo"/>
-           <List 
-           datarino={this.state.lista}
-           />
-           
-           
-
            <AddListItem onSubmit={this.handleSubmit}/>
 
            <Text>{this.state.name}</Text>

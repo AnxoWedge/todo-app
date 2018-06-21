@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, TouchableHighlight, Text, Alert, TextInput, Modal} from 'react-native'
+import { fromHsv } from 'react-native-color-picker'
 import AddEdit from './AddEdit'
 
 
@@ -11,6 +12,7 @@ export default class Item extends React.Component {
             index: this.props.index,
             editmode: false,
             text: this.props.item.data,
+            color: fromHsv(this.props.item.color),
         }
 
         this.handleSubmit= this.handleSubmit.bind(this);
@@ -19,7 +21,7 @@ export default class Item extends React.Component {
         this.handleEditSwitch = this.handleEditSwitch.bind(this)
     }
    
-
+ 
     handleEditSwitch(editmode){
         this.setState({
             editmode: !this.state.editmode,
@@ -36,17 +38,18 @@ export default class Item extends React.Component {
 */
     handleSubmit(stats, props){
         let index = this.state.index;
-        let colorino = stats.color;
+        let colorino = fromHsv(stats.color);
         this.setState({color: colorino})
         !this.props.Update || this.props.Update(stats, index);
     }
 
 
     render(){
+        const backColor = {backgroundColor : this.state.color}
         return(
         <View>
-            <TouchableHighlight style={{backgroundColor:"red"}}  onLongPress={this.handleRemove.bind(this)} onPress={this.handleEditSwitch.bind(this)}>
-                <Text key={this.props.index + this.props.item.key}> {this.props.item.data} {this.props.item.date}</Text>
+            <TouchableHighlight  onLongPress={this.handleRemove.bind(this)} onPress={this.handleEditSwitch.bind(this)}>
+                <Text style={backColor} key={this.props.index + this.props.item.key}> {this.props.item.data} {this.props.item.date}</Text>
                 
             </TouchableHighlight>
             <Modal 

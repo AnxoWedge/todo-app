@@ -49,45 +49,12 @@ export default class AddListItem extends React.Component{
                     transparent={false}
                     visible={this.state.editmode}
                     onRequestClose={() => {
-                        console.log(lel);
+                    
                 }}>
                     <AddEdit
                         onUpdate={this.handleTextSubmit}
                         onEdit={this.handleEditSwitch}
                         />
-                    {/*<TextInput
-                        placeholder="Adicione o seu item"
-                        onChangeText={(text)=>this.handleTextChange(text)}
-                        onSubmitEditing={this.handleTextSubmit}
-                    />
-
-                <DatePicker
-                    style={{width: 200}}
-                    date={this.state.date}
-                    mode="date"
-                    placeholder="Selecione a Data"
-                    format="YYYY-MM-DD"
-                    minDate="2016-05-01"
-                    maxDate="2017-06-01"
-                    confirmBtnText="Confirm"
-                    cancelBtnText="Cancel"
-                    customStyles={{
-                    dateIcon: {
-                        position: 'absolute',
-                        left: 0,
-                        top: 4,
-                        marginLeft: 0
-                    },
-                    dateInput: {
-                        marginLeft: 36
-                    }
-                    // ... You can check the source to find the other keys.
-                    }}
-                    onDateChange={(date) => {this.setState({date})}}
-                    />
-
-                    <TouchableHighlight onPress={this.handleTextSubmit}><Text>Adicionar</Text></TouchableHighlight>
-                    <Text>{this.state.stats.data}</Text>*/}
                 </Modal>
             </View>
                           )
