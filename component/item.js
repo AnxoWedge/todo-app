@@ -51,7 +51,7 @@ export default class Item extends React.Component {
             justifyContent: 'space-around',
             alignItems: 'center',
             flexDirection: 'row',
-            width: calc(Dimensions.get('window').width-((Dimensions.get('window').width*0.2)*2)  ),
+            width: calc(Dimensions.get('window').width-((Dimensions.get('window').width*0.15)*2)  ),
             height: 50,
             borderRadius: 10,
             marginTop: 5,
@@ -69,7 +69,7 @@ export default class Item extends React.Component {
                 transparent={false}
                 visible={this.state.editmode}
                 onRequestClose={() => {
-                  console.log(lel);
+                  
                 }}>
 
                 <AddEdit

@@ -16,8 +16,10 @@ export default class AppEdit extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-                data: [""],
-                date: "",
+                data: "n",
+                date: "n",
+                color:"n",
+                warning: false,
             }
             this.handleSubmit = this.handleSubmit.bind(this)
             this.handleEditSwitch = this.handleEditSwitch.bind(this)
@@ -27,14 +29,25 @@ export default class AppEdit extends React.Component{
         }
 
 handleSubmit(){
-    let stats = this.state
-    !this.props.onUpdate || this.props.onUpdate(stats)
-    this.handleEditSwitch()
+    if(this.state.data || this.state.date || this.state.color === "n" ){
+        let warning = true;
+        this.setState({warning})
+    }else {
+        let stats = this.state
+        !this.props.onUpdate || this.props.onUpdate(stats)
+        this.handleEditSwitch()
+        if(this.state.warning === true){
+            let warning = false;
+            this.setState({warning})
+        }
+    }
 }
 
 handleEditSwitch(){
     let editmode = false
     !this.props.onEdit || this.props.onEdit(editmode)
+
+    
 }    
 
 handleChangeData(text){
@@ -47,26 +60,33 @@ handleChangeColor(color){
     this.setState({color})
 }
     render(){
+        const warningStyle = {
+            color: 'red',
+        }
+
         return(
             
             <ScrollView contentContainerStyle={AppEditStyle.AppEdit_mainFrame}>
                 <View style={AppEditStyle.AppEdit_text}>
                     <Title title="A Sua Tarefa"/>
-                    <TextInput                    
+                    <View style={this.state.warning ?  {opacity:1} : {opacity:0, height: 0}}><Text >Por Favor, preencha este campo</Text></View>
+                    <TextInput
+                        maxLength={25}               
                         placeholder='Escreva a sua tarefa'
                         onChangeText={(text)=> this.handleChangeData(text)}
                         onSubmitEditing={this.handleSubmit}/>
                 </View>
                 <View style={AppEditStyle.AppEdit_calender}>
                     <Title title="A Data da sua Tarefa"/>
+                    <View style={this.state.warning ?  {opacity:1} : {opacity:0, height: 0}}><Text >Por Favor, preencha este campo</Text></View>
                     <DatePicker
                         style={{width: 200}}
                         date={this.state.date}
                         mode="date"
                         placeholder="Selecione a Data"
-                        format="YYYY-MM-DD"
-                        minDate="2016-05-01"
-                        maxDate="2017-06-01"
+                        format="DD-MM-YYYY"
+                        minDate="01-01-1990"
+                        maxDate="31-12-2999"
                         confirmBtnText="Confirm"
                         cancelBtnText="Cancel"
                         customStyles={{
@@ -79,13 +99,13 @@ handleChangeColor(color){
                         dateInput: {
                             marginLeft: 36
                         }
-                        // ... You can check the source to find the other keys.
                         }}
                         onDateChange={(date) => this.handleChangeDate(date)}
                     />
                 </View>
                 <View style={AppEditStyle.AppEdit_colorpick}>
                     <Title title="Personalize a sua Tarefa"/>
+                    <View style={this.state.warning ?  {opacity:1} : {opacity:0, height: 0}}><Text >Por Favor, preencha este campo</Text></View>
                     <ColorPicker
                         onColorChange= {color=> this.handleChangeColor(color)}
                         onColorSelected={color => alert(`Color selected: ${color}`)}
