@@ -1,9 +1,10 @@
 import React from 'react'
-import { StyleSheet, View, TouchableHighlight, Text, Alert, TextInput, Modal} from 'react-native'
+import { StyleSheet, View, TouchableHighlight, Text, Alert, TextInput, Modal, Dimensions} from 'react-native'
 import { fromHsv } from 'react-native-color-picker'
 import AddEdit from './AddEdit'
+import style from './../styles/styles'
 
-
+function calc(stuff) {return stuff}
 
 export default class Item extends React.Component {
     constructor(props){
@@ -45,12 +46,23 @@ export default class Item extends React.Component {
 
 
     render(){
-        const backColor = {backgroundColor : this.state.color}
+        const backColor = {
+            backgroundColor : this.state.color,
+            justifyContent: 'space-around',
+            alignItems: 'center',
+            flexDirection: 'row',
+            width: calc(Dimensions.get('window').width-((Dimensions.get('window').width*0.2)*2)  ),
+            height: 50,
+            borderRadius: 10,
+            marginTop: 5,
+                }
         return(
         <View>
             <TouchableHighlight  onLongPress={this.handleRemove.bind(this)} onPress={this.handleEditSwitch.bind(this)}>
-                <Text style={backColor} key={this.props.index + this.props.item.key}> {this.props.item.data} {this.props.item.date}</Text>
-                
+                <View style={backColor} key={this.props.index + this.props.item.key}>
+                    <Text>{this.props.item.data} </Text>
+                    <Text> {this.props.item.date}</Text>
+                </View>
             </TouchableHighlight>
             <Modal 
                 animationType="slide"

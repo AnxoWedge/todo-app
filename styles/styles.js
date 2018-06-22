@@ -2,7 +2,7 @@ import React from 'react'
 import {StyleSheet, Dimensions, } from 'react-native'
 
 
-function calc(bruno) {return bruno}
+function calc(stuff) {return stuff}
 
 
 const styles = StyleSheet.create({
@@ -18,11 +18,11 @@ const styles = StyleSheet.create({
     },
     menubtn:{
       flex: 1,
-      paddingTop: 65,
+      paddingTop: 25,
       flexDirection: 'row',
       textAlign: 'center',
       marginBottom: 20,
-      backgroundColor: 'yellow',
+      backgroundColor: '#000',
       height: calc(Dimensions.get('window').height * 0.1)
     },
     stylenav:{
