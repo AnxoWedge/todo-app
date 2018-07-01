@@ -37,6 +37,7 @@ export default class AddListItem extends React.Component{
                 data: stats.data,
                 date: stats.date,
                 color: stats.color,
+                status: stats.status,
             }
         })}
 

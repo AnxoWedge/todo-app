@@ -1,5 +1,5 @@
 import React from 'react'
-import {ScrollView, View, Text, TextInput, Button, Alert, TouchableHighlight, Modal} from 'react-native'
+import {ScrollView, View, Text, TextInput, Button, Alert, TouchableHighlight, Modal, Picker} from 'react-native'
 import DatePicker from 'react-native-datepicker'
 import {ColorPicker} from 'react-native-color-picker'
 import AppEditStyle from './../styles/appEditStyle'
@@ -29,18 +29,9 @@ export default class AppEdit extends React.Component{
         }
 
 handleSubmit(){
-    if(this.state.data || this.state.date || this.state.color === "n" ){
-        let warning = true;
-        this.setState({warning})
-    }else {
         let stats = this.state
         !this.props.onUpdate || this.props.onUpdate(stats)
         this.handleEditSwitch()
-        if(this.state.warning === true){
-            let warning = false;
-            this.setState({warning})
-        }
-    }
 }
 
 handleEditSwitch(){
@@ -111,6 +102,17 @@ handleChangeColor(color){
                         onColorSelected={color => alert(`Color selected: ${color}`)}
                         style={{flex: 1}}
                     />
+                </View>
+                <View style={AppEditStyle.AppEdit_colorpick}>
+                    <Title title="Personalize a sua Tarefa"/>
+                    <View style={this.state.warning ?  {opacity:1} : {opacity:0, height: 0}}><Text >Por Favor, preencha este campo</Text></View>
+                    <Picker
+                        selectedValue={this.state.status}
+                        style={{ height: 50, width: 100 }}
+                        onValueChange={(itemValue, itemIndex) => this.setState({status: itemValue})}>
+                        <Picker.Item label="Incompleto" value="incompleto" />
+                        <Picker.Item label="completo" value="completo" />
+                    </Picker>
                 </View>
                 <View style={AppEditStyle.AppEdit_submitSec}>
                     <TouchableHighlight style={AppEditStyle.AppEdit_submitBtn} onPress={this.handleSubmit}>

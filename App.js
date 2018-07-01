@@ -12,7 +12,7 @@ export default class App extends React.Component {
     this.state={
       title: "To Do List",
       lista:[
-        {key:"teste1", data:["teste1nome"], date:"2000-1-1", color:"purple",},
+        {key:"teste1", data:["teste1nome"], date:"2000-1-1", color:"purple", status:"incompleto",},
         {key:"teste2", data:["teste2nome"], date:"2000-1-1", color:"red",},
         {key:"teste3", data:["teste3nome"], date:"2000-1-1", color:"blue",},
         {key:"teste4", data:["teste4nome"], date:"2000-1-1", color:"green",},
@@ -50,6 +50,7 @@ handlingUpdate(stats, index){
     data: stats.data,
     date: stats.date,
     color: stats.color,
+    status: stats.status,
   }
   lista[index] = verifiedStats
   this.setState({lista})
@@ -66,11 +67,15 @@ handlingUpdate(stats, index){
            datarino={this.state.lista}
            onRemove={this.handleRemove}
            OnUpdate={this.handlingUpdate}
+           filter= {item => item.status === "incompleto"}
            />
            
           <Title title="Completo"/>
            <List 
            datarino={this.state.lista}
+           onRemove={this.handleRemove}
+           OnUpdate={this.handlingUpdate}
+           filter= {item => item.status === "completo"}
            />
            <AddListItem onSubmit={this.handleSubmit}/>
 

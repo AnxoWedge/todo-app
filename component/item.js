@@ -14,6 +14,7 @@ export default class Item extends React.Component {
             editmode: false,
             text: this.props.item.data,
             color: fromHsv(this.props.item.color),
+            status: this.props.item.status,
         }
 
         this.handleSubmit= this.handleSubmit.bind(this);

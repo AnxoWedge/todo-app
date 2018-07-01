@@ -24,11 +24,15 @@ export default class List extends React.Component {
     handleUpdate(stats,index){
         !this.props.OnUpdate || this.props.OnUpdate(stats,index);
     }
+
+    renderItem(item, index){
+        return <Item Remove={this.handleRemoveItem} index={index} item={item} Update={this.handleUpdate} />
+    }
     
     render(){
         return( 
             <FlatList
-                renderItem={({item, index}) => <Item Remove={this.handleRemoveItem} index={index} item={item} Update={this.handleUpdate} />  }
+                renderItem={({item, index}) => !this.props.filter ? this.renderItem(item, index) : ( this.props.filter(item) ? this.renderItem(item, index) : null)}
                 data={this.state.stats}
                 keyExtractor={(item, index) => item + index}
                 extraData={this.state}
