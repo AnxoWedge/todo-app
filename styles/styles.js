@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
       flex: 9,
       alignItems: 'center',
       justifyContent: 'space-around',
-    },
+    },  
     menubtn:{
       flex: 1,
       paddingTop: 25,

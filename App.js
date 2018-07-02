@@ -13,9 +13,9 @@ export default class App extends React.Component {
       title: "To Do List",
       lista:[
         {key:"teste1", data:["teste1nome"], date:"2000-1-1", color:"purple", status:"incompleto",},
-        {key:"teste2", data:["teste2nome"], date:"2000-1-1", color:"red",},
-        {key:"teste3", data:["teste3nome"], date:"2000-1-1", color:"blue",},
-        {key:"teste4", data:["teste4nome"], date:"2000-1-1", color:"green",},
+        {key:"teste2", data:["teste2nome"], date:"2000-1-1", color:"red", status:"incompleto",},
+        {key:"teste3", data:["teste3nome"], date:"2000-1-1", color:"blue", status:"completo",},
+        {key:"teste4", data:["teste4nome"], date:"2000-1-1", color:"green", status:"completo",},
         ],
       text: "",
     }
